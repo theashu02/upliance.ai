@@ -1,7 +1,11 @@
 // import React from 'react'
 
+import SimpleMUITest from "./components/Test";
+
 export default function App() {
   return (
-    <div className="text-lg bg-amber-500 h-3 w-full">App</div>
+    <>
+      <SimpleMUITest />
+    </>
   )
 }
