@@ -68,9 +68,9 @@ export default function Sidebar() {
               fontWeight: "bold",
               ml: 1,
             }}
-            // className="bg-red-400"
+            // className="font-consolas"
           >
-            Upliance.ai
+            <span className="font-poppins text-xl">Upliance.ai</span>
           </Typography>
         )}
         <IconButton onClick={toggle}>
