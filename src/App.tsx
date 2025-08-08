@@ -1,11 +1,11 @@
 // import React from 'react'
 
-import SimpleMUITest from "./components/Test";
+import Test from "./components/Test";
 
 export default function App() {
   return (
     <>
-      <SimpleMUITest />
+      <Test />
     </>
   )
 }
