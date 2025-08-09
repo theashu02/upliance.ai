@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Paper,
   Typography,
   TextField,
@@ -12,7 +11,6 @@ import {
   MenuItem,
   Select,
 } from "@mui/material";
-import { Delete, ArrowUpward, ArrowDownward } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import FieldPalette from "../components/FieldPalette";
@@ -23,6 +21,7 @@ import {
   removeField,
   moveField,
 } from "../store/slices/formBuilderSlice";
+import { Info, Trash, ChevronUp, ChevronDown } from "lucide-react";
 
 export default function CreateForm() {
   const theme = useTheme();
@@ -30,13 +29,18 @@ export default function CreateForm() {
   const { fields, selectedId } = useAppSelector((s) => s.formBuilder);
   const selected = fields.find((f) => f.id === selectedId);
 
-  /* ---------- save schema ---------- */
   const handleSave = () => {
     const name = window.prompt("Enter a name for this form schema:");
     if (!name) return;
     localStorage.setItem(name, JSON.stringify(fields));
     alert(`Saved schema under key "${name}"`);
   };
+
+  const SwitchData = [
+    { key: "notEmpty", label: "Not Empty" },
+    { key: "email", label: "Email Format" },
+    { key: "password", label: "Custom Password Rule" },
+  ];
 
   return (
     <Box
@@ -49,14 +53,11 @@ export default function CreateForm() {
     >
       {/* Left */}
       <Box flex={1}>
-        <Typography variant="h6" gutterBottom>
-          Add Field
-        </Typography>
+        <div className="text-xl font-poppins mb-3">Add Fields</div>
+
         <FieldPalette onAddField={(t) => dispatch(addField(t))} />
 
-        <Typography variant="h6" gutterBottom>
-          Fields
-        </Typography>
+        <div className="text-xl font-poppins mb-3">Fields</div>
         {fields.map((fld) => (
           <Paper
             key={fld.id}
@@ -83,7 +84,7 @@ export default function CreateForm() {
                 }
                 size="small"
               >
-                <ArrowUpward fontSize="small" />
+                <ChevronUp fontSize="small" />
               </IconButton>
               <IconButton
                 onClick={() =>
@@ -91,33 +92,48 @@ export default function CreateForm() {
                 }
                 size="small"
               >
-                <ArrowDownward fontSize="small" />
+                <ChevronDown fontSize="small" />
               </IconButton>
               <IconButton
                 onClick={() => dispatch(removeField(fld.id))}
                 size="small"
               >
-                <Delete fontSize="small" />
+                <Trash fontSize="small" />
               </IconButton>
             </Box>
           </Paper>
         ))}
 
-        <Button
-          variant="contained"
+        <button
           onClick={handleSave}
-          sx={{ mt: 2 }}
           disabled={!fields.length}
+          className="bg-black hover:bg-stone-900/80 text-white border border-slate-400 hover:border-blue-300
+                           rounded-lg px-3 py-2 text-sm font-medium hover:text-blue-200
+                           transition-all duration-200 ease-out
+                           hover:shadow-md active:scale-95
+                           focus:outline-none focus:ring-2 focus:ring-blue-500/50 uppercase"
         >
           Save Form
-        </Button>
+        </button>
       </Box>
 
       {/* Right */}
-      <Box flex={1}>
+      <Box
+        flex={1}
+        sx={{
+          "& .MuiInputLabel-root": {
+            fontFamily: "Poppins, sans-serif",
+          },
+          "& .MuiInputBase-input": {
+            fontFamily: "Poppins, sans-serif",
+          },
+        }}
+      >
         {selected ? (
-          <Paper sx={{ p: 2 }}>
-            <Typography variant="h6">Configure Field</Typography>
+          <Paper sx={{ p: 2, backgroundColor: "#f4f4f4" }}>
+            <span className="text-xl font-poppins font-semibold">
+              Configure Field
+            </span>
 
             {/* Label */}
             <TextField
@@ -154,7 +170,7 @@ export default function CreateForm() {
             />
 
             {/* Default value */}
-            <TextField
+            {/* <TextField
               label="Default Value"
               fullWidth
               value={selected.defaultValue}
@@ -167,7 +183,7 @@ export default function CreateForm() {
                 )
               }
               sx={{ mt: 2 }}
-            />
+            /> */}
 
             {/* Options for select / radio / checkbox */}
             {["select", "radio", "checkbox"].includes(selected.type) && (
@@ -190,14 +206,8 @@ export default function CreateForm() {
             )}
 
             {/* Validation switches */}
-            <Typography variant="subtitle1" sx={{ mt: 2 }}>
-              Validation Rules
-            </Typography>
-            {[
-              { key: "notEmpty", label: "Not Empty" },
-              { key: "email", label: "Email Format" },
-              { key: "password", label: "Custom Password Rule" },
-            ].map(({ key, label }) => (
+            <div className="text-md font-poppins mt-2">Validation Rules</div>
+            {SwitchData.map(({ key, label }) => (
               <FormControlLabel
                 key={key}
                 control={
@@ -267,10 +277,9 @@ export default function CreateForm() {
             {/* Derived settings */}
             {selected.type === "derived" && (
               <>
-                <Typography variant="subtitle1" sx={{ mt: 2 }}>
+                <div className="text-md font-poppins mt-2 mb-1">
                   Derived Settings
-                </Typography>
-
+                </div>
                 <FormControl fullWidth sx={{ mt: 1 }}>
                   <InputLabel>Parent Fields</InputLabel>
                   <Select
@@ -317,7 +326,10 @@ export default function CreateForm() {
             )}
           </Paper>
         ) : (
-          <Typography>Select a field to configure…</Typography>
+          <div className="mt-4 flex items-center gap-3 rounded-lg border border-dashed border-gray-300 bg-white/70 px-4 py-3 text-sm text-gray-700 shadow-sm">
+            <Info />
+            <span className="font-medium">Select a field to configure…</span>
+          </div>
         )}
       </Box>
     </Box>

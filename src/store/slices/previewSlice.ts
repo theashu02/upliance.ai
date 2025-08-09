@@ -30,9 +30,10 @@ interface PreviewState {
   forms: string[];
   activeForm: string | null;
   fields: Field[];
+  lastOpened: string | null,
 }
 
-const initialState: PreviewState = { forms: [], activeForm: null, fields: [] };
+const initialState: PreviewState = { forms: [], activeForm: null, fields: [], lastOpened: null };
 
 const previewSlice = createSlice({
   name: 'preview',
@@ -47,10 +48,18 @@ const previewSlice = createSlice({
     ) => {
       state.activeForm = payload.name;
       state.fields = payload.fields;
+      state.lastOpened = payload.name;
     },
-    closeForm: () => initialState,
+    // closeForm: () => initialState,
+    closeForm: (state) => {
+      state.activeForm = null;
+      state.fields     = [];
+    },
+    clearLastOpened: (state) => {
+      state.lastOpened = null;
+    },
   },
 });
 
-export const { setForms, openForm, closeForm } = previewSlice.actions;
+export const { setForms, openForm, closeForm, clearLastOpened } = previewSlice.actions;
 export default previewSlice.reducer;

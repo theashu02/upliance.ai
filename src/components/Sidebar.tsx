@@ -1,23 +1,7 @@
 import React from "react";
-import {
-  Drawer,
-  IconButton,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Toolbar,
-  useMediaQuery,
-  useTheme,
-  Divider,
-  Typography,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import CreateIcon from "@mui/icons-material/Create";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import ListAltIcon from "@mui/icons-material/ListAlt";
+import { Drawer, IconButton, List, ListItemButton, ListItemIcon, Toolbar, useMediaQuery, useTheme, Divider, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { BadgePlus, Library, ChevronLeft, Logs, BadgeInfo } from "lucide-react";
 
 const DRAWER_WIDTH = 240;
 
@@ -49,6 +33,7 @@ export default function Sidebar() {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,
           }),
+          backgroundColor: "#f8f2dc",
         },
       }}
     >
@@ -68,36 +53,36 @@ export default function Sidebar() {
               fontWeight: "bold",
               ml: 1,
             }}
-            // className="font-consolas"
           >
             <span className="font-poppins text-xl">Upliance.ai</span>
           </Typography>
         )}
         <IconButton onClick={toggle}>
-          {open ? <ChevronLeftIcon /> : <MenuIcon />}
+          {open ? <ChevronLeft /> : <Logs />}
         </IconButton>
       </Toolbar>
       <Divider />
       <List>
         <ListItemButton component={Link} to="/create">
           <ListItemIcon>
-            <CreateIcon />
+            <BadgePlus />
           </ListItemIcon>
-          {open && <ListItemText primary="Create" />}
-        </ListItemButton>
-        <ListItemButton component={Link} to="/preview">
-          <ListItemIcon>
-            <VisibilityIcon />
-          </ListItemIcon>
-          {open && <ListItemText primary="Preview" />}
+          {open && <span className="font-poppins text-lg">Create</span>}
         </ListItemButton>
         <ListItemButton component={Link} to="/my-forms">
           <ListItemIcon>
-            <ListAltIcon />
+            <Library />
           </ListItemIcon>
-          {open && <ListItemText primary="My Forms" />}
+          {open && <span className="font-poppins text-lg">My Forms</span>}
         </ListItemButton>
       </List>
+      <p className="flex font-consolas text-xs text-slate-600 absolute bottom-5 left-4 mr-5">
+        {open ? (
+          <span>Made by Ashu | © 2025 All Rights Reserved.</span>
+        ) : (
+          <BadgeInfo />
+        )}
+      </p>
     </Drawer>
   );
 }
