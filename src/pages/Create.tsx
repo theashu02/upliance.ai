@@ -154,7 +154,7 @@ export default function CreateForm() {
             />
 
             {/* Default value */}
-            <TextField
+            {/* <TextField
               label="Default Value"
               fullWidth
               value={selected.defaultValue}
@@ -167,7 +167,7 @@ export default function CreateForm() {
                 )
               }
               sx={{ mt: 2 }}
-            />
+            /> */}
 
             {/* Options for select / radio / checkbox */}
             {["select", "radio", "checkbox"].includes(selected.type) && (
