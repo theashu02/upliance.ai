@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import { setForms, openForm, type Field } from "../store/slices/previewSlice";
@@ -30,27 +30,6 @@ export default function MyFormsPage() {
 
   return (
     <>
-      {/* <Box p={2}>
-      <Typography variant="h5" gutterBottom>
-        Saved Forms
-      </Typography>
-
-      {forms.length === 0 && <Typography>No saved schemas.</Typography>}
-
-      <Grid container spacing={2}>
-        {forms.map((n) => (
-          <Grid item xs={12} sm={6} md={4} key={n}>
-            <Card>
-              <CardActionArea onClick={() => handleOpen(n)}>
-                <CardContent>
-                  <Typography variant="h6">{n}</Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Box> */}
       <section className="w-full">
         <div className="p-3">
           <header className="mb-4 sm:mb-6">

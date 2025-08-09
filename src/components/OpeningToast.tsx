@@ -18,7 +18,7 @@ export default function OpeningToast() {
     <div
       role="status"
       aria-live="polite"
-      className="pointer-events-none fixed bottom-4 inset-x-0 mx-auto w-fit rounded-full bg-neutral-900 text-white px-4 py-2 text-xs shadow-lg/40 shadow-black/40 dark:bg-neutral-800 z-50"
+      className="pointer-events-none fixed top-4 inset-x-0 mx-auto w-fit rounded-full bg-neutral-900 text-white px-4 py-2 text-xs shadow-lg/40 shadow-black/40 dark:bg-neutral-800 z-50"
     >
       Opening:&nbsp;<span className="font-medium">{lastOpened}</span>
     </div>

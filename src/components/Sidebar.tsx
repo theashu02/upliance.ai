@@ -1,17 +1,5 @@
 import React from "react";
-import {
-  Drawer,
-  IconButton,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Toolbar,
-  useMediaQuery,
-  useTheme,
-  Divider,
-  Typography,
-} from "@mui/material";
+import { Drawer, IconButton, List, ListItemButton, ListItemIcon, Toolbar, useMediaQuery, useTheme, Divider, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { BadgePlus, Library, ChevronLeft, Logs, BadgeInfo } from "lucide-react";
 
@@ -88,7 +76,7 @@ export default function Sidebar() {
           {open && <span className="font-poppins text-lg">My Forms</span>}
         </ListItemButton>
       </List>
-      <p className="flex font-consolas text-xs text-slate-600 absolute bottom-5 left-5 mr-5">
+      <p className="flex font-consolas text-xs text-slate-600 absolute bottom-5 left-4 mr-5">
         {open ? (
           <span>Made by Ashu | © 2025 All Rights Reserved.</span>
         ) : (
