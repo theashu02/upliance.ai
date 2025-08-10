@@ -54,7 +54,7 @@ export default function Sidebar() {
               ml: 1,
             }}
           >
-            <span className="font-poppins text-xl">Upliance.ai</span>
+            <span className="font-poppins text-xl"><Link to="/">Upliance.ai</Link></span>
           </Typography>
         )}
         <IconButton onClick={toggle}>
