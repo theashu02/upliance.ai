@@ -30,12 +30,12 @@ export default function LandingPage() {
 
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
-                to="/preview"
+                to="/create"
                 className={`${baseButtonStyles} ${primaryButtonStyles}`}
                 aria-label="Preview a form"
               >
                 <Eye className="h-5 w-5" />
-                <span>Preview</span>
+                <span>Create</span>
               </Link>
               <Link
                 to="/my-forms"
