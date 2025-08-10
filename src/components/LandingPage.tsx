@@ -1,4 +1,5 @@
 import { Eye, FileCheck2 } from "lucide-react"
+import { Link } from "react-router-dom"
 
 export default function LandingPage() {
   const baseButtonStyles =
@@ -28,22 +29,22 @@ export default function LandingPage() {
             </p>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a
-                href="/preview"
+              <Link
+                to="/preview"
                 className={`${baseButtonStyles} ${primaryButtonStyles}`}
                 aria-label="Preview a form"
               >
                 <Eye className="h-5 w-5" />
                 <span>Preview</span>
-              </a>
-              <a
-                href="/my-forms"
+              </Link>
+              <Link
+                to="/my-forms"
                 className={`${baseButtonStyles} ${secondaryButtonStyles}`}
                 aria-label="View my saved forms"
               >
                 <FileCheck2 className="h-5 w-5" />
                 <span>My Forms</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
