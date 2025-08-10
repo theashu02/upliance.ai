@@ -1,26 +1,8 @@
-import {
-  Box,
-  Paper,
-  Typography,
-  TextField,
-  Switch,
-  FormControlLabel,
-  IconButton,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-} from "@mui/material";
+import { Box, Paper, Typography, TextField, Switch, FormControlLabel, IconButton, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import FieldPalette from "../components/FieldPalette";
-import {
-  addField,
-  selectField,
-  updateField,
-  removeField,
-  moveField,
-} from "../store/slices/formBuilderSlice";
+import { addField, selectField, updateField, removeField, moveField } from "../store/slices/formBuilderSlice";
 import { Info, Trash, ChevronUp, ChevronDown } from "lucide-react";
 
 export default function CreateForm() {
@@ -53,7 +35,7 @@ export default function CreateForm() {
     >
       {/* Left */}
       <Box flex={1}>
-        <div className="text-xl font-poppins mb-3">Add Fields</div>
+        <div className="text-xl font-poppins mb-3">Choose Fields</div>
 
         <FieldPalette onAddField={(t) => dispatch(addField(t))} />
 
@@ -107,11 +89,7 @@ export default function CreateForm() {
         <button
           onClick={handleSave}
           disabled={!fields.length}
-          className="bg-black hover:bg-stone-900/80 text-white border border-slate-400 hover:border-blue-300
-                           rounded-lg px-3 py-2 text-sm font-medium hover:text-blue-200
-                           transition-all duration-200 ease-out
-                           hover:shadow-md active:scale-95
-                           focus:outline-none focus:ring-2 focus:ring-blue-500/50 uppercase"
+          className="bg-black hover:bg-stone-900/80 text-white border border-slate-400 hover:border-blue-300 rounded-lg px-3 py-2 text-sm font-medium hover:text-blue-200 transition-all duration-200 ease-out hover:shadow-md active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500/50 uppercase"
         >
           Save Form
         </button>
@@ -168,22 +146,6 @@ export default function CreateForm() {
               }
               label="Required"
             />
-
-            {/* Default value */}
-            {/* <TextField
-              label="Default Value"
-              fullWidth
-              value={selected.defaultValue}
-              onChange={(e) =>
-                dispatch(
-                  updateField({
-                    id: selected.id,
-                    changes: { defaultValue: e.target.value },
-                  })
-                )
-              }
-              sx={{ mt: 2 }}
-            /> */}
 
             {/* Options for select / radio / checkbox */}
             {["select", "radio", "checkbox"].includes(selected.type) && (

@@ -18,7 +18,7 @@ export default function Sidebar() {
 
   return (
     <Drawer
-      variant={isDesktop ? "permanent" : "temporary"}
+      variant="permanent"
       open={open}
       onClose={toggle}
       ModalProps={{ keepMounted: true }}
