@@ -5,6 +5,7 @@ import CreatePage from "./pages/Create";
 import MyFormsPage from "./pages/MyFormsPage";
 import Preview from "./pages/Preview";
 import OpeningToast from "./components/OpeningToast";
+import LandingPage from "./components/LandingPage";
 
 export default function App() {
   return (
@@ -22,7 +23,7 @@ export default function App() {
             <Route path="/create" element={<CreatePage />} />
             <Route path="/my-forms" element={<MyFormsPage />} />
             <Route path="/preview" element={<Preview />} />
-            <Route path="*" element={<CreatePage />} />
+            <Route path="*" element={<LandingPage />} />
           </Routes>
         </Box>
       </div>

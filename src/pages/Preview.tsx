@@ -578,19 +578,18 @@ export default function Preview() {
 
   return (
     <div className="flex flex-col min-h-screen w-full overflow-y-auto">
-      <div className="absolute pl-5 pt-5">
+      <div className="absolute pl-2 pt-5">
         <button
           onClick={handleBack}
           className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
         >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to forms
+          <ArrowLeft className="w-4 h-4" />
         </button>
       </div>
       <div className="w-full max-w-3xl mx-auto px-2 md:px-1 my-5">
         <div className="bg-[#f4f4f4] rounded-xl shadow-lg border border-gray-200">
           {/* form header */}
-          <div className="px-6 py-4 border-b border-gray-200 bg-amber-50 rounded-t-xl">
+          <div className="text-center px-6 py-4 border-b border-gray-200 bg-amber-50 rounded-t-xl">
             <h2 className="text-3xl font-light text-gray-900 font-poppins">
               Preview: {activeForm}
             </h2>
